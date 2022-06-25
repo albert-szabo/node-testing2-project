@@ -135,7 +135,7 @@ describe('HTTP tests', () => {
         expect(result).toHaveLength(4);
         expect(result[2]).toMatchObject({ name: 'lynx' });
 
-        response = await request(server).delete('/hobbits/17');
+        response = await request(server).delete('/animals/17');
         expect(response.statusCode).toBe(404);
     });
 });
