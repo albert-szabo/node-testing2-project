@@ -24,7 +24,7 @@ server.get("/animals/:ID", async (request, response) => {
   try {
     const result = await Animals.getByID(request.params.id);
     if(!result) {
-      response.status(404).json({ message: 'That animals was not found.' });
+      response.status(404).json({ message: 'That animal was not found.' });
       return;
     }
     response.json(result);
