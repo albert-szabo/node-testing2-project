@@ -63,7 +63,7 @@ server.put("/animals/:id", async (request, response) => {
   try {
     const result = await Animals.update(request.params.id, request.body);
     if(!result) {
-      response.status(404).json({ message: 'That animals was not found.' });
+      response.status(404).json({ message: 'That animal was not found.' });
       return;
     }
     response.json(result);
