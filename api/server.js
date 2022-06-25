@@ -20,7 +20,7 @@ server.get("/animals", (request, response) => {
     });
 });
 
-server.get("/animals/:ID", async (request, response) => {
+server.get("/animals/:id", async (request, response) => {
   try {
     const result = await Animals.getByID(request.params.id);
     if(!result) {
@@ -46,7 +46,7 @@ server.post("/animals", async (request, response) => {
   }
 });
 
-server.delete("/animals/:ID", async (request, response) => {
+server.delete("/animals/:id", async (request, response) => {
   try {
     const result = await Animals.remove(request.params.id);
     if(!result) {
@@ -59,7 +59,7 @@ server.delete("/animals/:ID", async (request, response) => {
   }
 });
 
-server.put("/animals/:ID", async (request, response) => {
+server.put("/animals/:id", async (request, response) => {
   try {
     const result = await Animals.update(request.params.id, request.body);
     if(!result) {

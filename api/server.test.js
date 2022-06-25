@@ -89,7 +89,7 @@ describe('HTTP tests', () => {
         expect(response.body).toHaveLength(5);
     });
 
-    test('GET /animals/:ID', async () => {
+    test('GET /animals/:id', async () => {
         let response = await request(server).get('/animals/2');
         expect(response).toBeDefined();
         expect(response.body.id).toBe(2);
@@ -114,19 +114,19 @@ describe('HTTP tests', () => {
         result = await Animals.getAll();
         expect(result).toHaveLength(6);
     });
-    test('PUT /animals/:ID', async () => {
+    test('PUT /animals/:id', async () => {
         let response = await request(server).put('/animals/2').send({ name: 'squid' });
         expect(response.body.id).toBe(2);
         expect(response.body.name).toBe('squid');
 
         const result = await Animals.getAll();
         expect(result).toHaveLength(5);
-        expect(result[1]).toMatchObject({ name: 'dolphin' });
+        expect(result[2]).toMatchObject({ name: 'lynx' });
 
         response = await request(server).put('/animals/29').send({ name: 'grasshopper' });
         expect(response.statusCode).toBe(404);
     });
-    test('DELETE /animals/:ID', async () => {
+    test('DELETE /animals/:id', async () => {
         let response = await request(server).delete('/animals/5');
         expect(response.body.id).toBe(5);
         expect(response.body.name).toBe('owl');
