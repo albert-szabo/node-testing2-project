@@ -1,13 +1,13 @@
-/**
- * @param { import("knex").Knex } knex
- * @returns { Promise<void> } 
- */
-exports.seed = async function(knex) {
-  // Deletes ALL existing entries
-  await knex('table_name').del()
-  await knex('table_name').insert([
-    {id: 1, colName: 'rowValue1'},
-    {id: 2, colName: 'rowValue2'},
-    {id: 3, colName: 'rowValue3'}
-  ]);
+exports.seed = function(knex, Promise) {
+  return knex('animals')
+    .truncate()
+    .then(function() {
+      return knex('animals').insert([
+        { name: 'giraffe', habitat: 'African savanna', size: 'very large' },
+        { name: 'dolphin', habitat: 'ocean', size: 'large' },
+        { name: 'lynx', habitat: 'various', size: 'medium' },
+        { name: 'squirrel', habitat: 'various', size: 'small' },
+        { name: 'owl', habitat: 'forest', size: 'medium' }
+      ]);
+    });
 };
